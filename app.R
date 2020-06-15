@@ -95,7 +95,7 @@ server <- function(input, output, session) {
             return(NULL)
         }
         
-        #get k
+        #combine keys list
         return(c(ls(session$userData$httpheader), ls(session$userData$httpheader$HEADERS)))
     }
     #####
@@ -125,7 +125,7 @@ server <- function(input, output, session) {
         #found values
         foundvalues  <- lapply( input$headerkeys, getHeaderValue)
         
-        #update reactive data.frame
+        #update reactive value into a dataframe
         rv$dfheaders <- do.call(rbind, Map(data.frame, key=input$headerkeys, value=foundvalues))
         
     })
